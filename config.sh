@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#pointing to ethmine branch release/0.14
-path_ethminer=~/miner/ethminer/release/build/ethminer
+#used a custom version of ethminer: pretty closed of the commit 9ee8024b30d935d15ed24867d9bacfdf7266a68f
+path_ethminer=~/miner/ethminer/modif/build/ethminer
 
 . ./config_private.sh
 
