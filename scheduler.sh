@@ -6,8 +6,10 @@ param_pos=$2
 log_file=./log/log_v3_$param_task.txt
 
 time_dead=3
-time_life_min=12000
-time_life_jitter=100
+
+#advive to set about 12000 max. in my case 15000 seconds leads to blackscreen miner stop, reason = unknow.
+time_life_min=9999
+time_life_jitter=888
 
 # random delay at startup
 # tmp=$(od -An -N4 -tu /dev/urandom)
@@ -81,6 +83,10 @@ do
 
    # kill and restart task
    echo $(date '+%Y %b %d %H:%M:%S') 'stop&restart:' $param_task " for $time_life sec."| tee -a $log_file
+
+   while pgrep steam; do # do not restart the task when I am playing !!
+      sleep 60 
+   done
 
    eval $stop_task
    sleep $time_dead
