@@ -6,26 +6,49 @@ cd ~/miner/miner_scripts
 
 ./nvidia_settings_mining.sh
 
+if [ "$Mode" = "" ] ; then
 #Mode=UBQ
-#Mode=ETH
+#Mode=ETH_M
+#Mode=ETH_D
 #Mode=DUMMY
-Mode=MIXED
+#Mode=MIXED
+#Mode=XVG
+Mode=XVG_compare
+fi
 
 if [ "$Mode" = "UBQ" ] ; then
    task1051=UBQ_baleine_GTX1051.sh
    task1061=UBQ_baleine_GTX1061.sh
    task1062=UBQ_baleine_GTX1062.sh
    task1071=UBQ_baleine_GTX1071.sh
-elif [ "$Mode" = "ETH" ] ; then
+elif [ "$Mode" = "ETH_D" ] ; then
    task1051=ETH_dwarf_GTX1051.sh
    task1061=ETH_dwarf_GTX1061.sh
    task1062=ETH_dwarf_GTX1062.sh
    task1071=ETH_dwarf_GTX1071.sh
+elif [ "$Mode" = "ETH_M" ] ; then
+   task1051=ETH_minergate_GTX1051.sh
+   task1061=ETH_minergate_GTX1061.sh
+   task1062=ETH_minergate_GTX1062.sh
+   task1071=ETH_minergate_GTX1071.sh
 elif [ "$Mode" = "MIXED" ] ; then
    task1051=UBQ_baleine_GTX1051.sh
    task1061=ETH_dwarf_GTX1061.sh
    task1062=ETH_dwarf_GTX1062.sh
    task1071=UBQ_baleine_GTX1071.sh
+elif [ "$Mode" = "XVG" ] ; then
+# XVG on 1051 always crash --> mine somzthing else instead
+   #task1051=UBQ_baleine_GTX1051.sh 
+   task1051=ETH_dwarf_GTX1051.sh 
+   task1061=XVG_yiimp_GTX1061.sh
+   task1062=XVG_yiimp_GTX1062.sh
+   task1071=XVG_yiimp_GTX1071.sh
+elif [ "$Mode" = "XVG_compare" ] ; then
+# XVG on 1051 always crash --> mine somzthing else instead
+   task1051=UBQ_baleine_GTX1051.sh 
+   task1061=XVG_HashFaster_Lyra_GTX1061.sh
+   task1062=XVG_HashFaster_X17_GTX1062.sh
+   task1071=ETH_dwarf_GTX1071.sh
 else
    task1051=dummy_task0.sh
    task1061=dummy_task1.sh
