@@ -8,7 +8,7 @@ echo -ne "\033]0;"MinerGate ETH CUDA $cuda_dev"\007"
 
 cd $path_ethminer
 
-if ![[ $cuda_dev =~ '^[0-9]+$' ]] ; then
+if ![[ $cuda_dev =~ ^[0-9]+$ ]] ; then
       echo "device_cuda is NA or is not a number: $cuda_dev"
    read toto
    exit 1
