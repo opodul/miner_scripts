@@ -148,7 +148,7 @@ def Regul_Loop(index=0):
     msg += "OkCnt:%3d" % (g_RegulInfo_OkCnt[index])
     print(msg)
     
-    set_FanSpeed(int(pwm_val) , index)
+    set_FanSpeed(pwm=int(pwm_val) , index=index)
     
     with open("out"+str(index)+".csv","a") as f:
         f.write(str(int(time.time()))+";"+str(temp_curr)+";"+str(pwm_val)+"\n")
